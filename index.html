@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="theme.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Smart Task Manager</h1>
+            <p class="subtitle">Organize your tasks efficiently</p>
+            <button class="theme-toggle" id="themeToggle" type="button">
+                <span id="themeToggleIcon" class="toggle-icon">☀️</span>
+                <span id="themeToggleLabel">Light mode</span>
+            </button>
+        </header>
+
+        <div class="main-content">
+            <!-- Task Input Form -->
+            <section class="task-form-section">
+                <h2>Add New Task</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title *</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title..." required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDeadline">Deadline</label>
+                            <input type="date" id="taskDeadline">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskCategory">Category</label>
+                            <select id="taskCategory">
+                                <option value="Personal" selected>Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="School">School</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskReminder">Set Reminder</label>
+                        <input type="datetime-local" id="taskReminder">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">Add Task</button>
+                        <button type="button" id="cancelEditBtn" class="btn btn-secondary" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Filters and Sorting -->
+            <section class="controls-section">
+                <div class="controls-row">
+                    <div class="filter-group">
+                        <label for="filterCategory">Filter by Category:</label>
+                        <select id="filterCategory">
+                            <option value="all">All Categories</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="School">School</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filterPriority">Filter by Priority:</label>
+                        <select id="filterPriority">
+                            <option value="all">All Priorities</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="sortBy">Sort by:</label>
+                        <select id="sortBy">
+                            <option value="deadline">Deadline</option>
+                            <option value="priority">Priority</option>
+                            <option value="dateCreated">Date Created</option>
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="showCompleted">
+                            Show Completed
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Task Statistics -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-label">Total Tasks</span>
+                    <span class="stat-value" id="totalTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completed</span>
+                    <span class="stat-value" id="completedTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value" id="pendingTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">High Priority</span>
+                    <span class="stat-value" id="highPriorityTasks">0</span>
+                </div>
+            </section>
+
+            <!-- Task List -->
+            <section class="task-list-section">
+                <h2>Your Tasks</h2>
+                <div id="taskList" class="task-list">
+                    <p class="empty-message">No tasks yet. Add your first task above!</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
+
